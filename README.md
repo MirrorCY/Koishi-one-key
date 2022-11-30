@@ -13,3 +13,7 @@
 - [ ] 一键更新所有依赖
 - [ ] 一键新建实例
 - [x] 获取脚本更新信息
+
+## 问题反馈
+
+![QR](https://simx.elchapo.cn/NovelAI.png)
