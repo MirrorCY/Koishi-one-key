@@ -11,8 +11,10 @@ if %errorlevel%==0 ( rd "%SystemRoot%\system32\%uac%" >nul 2>nul ) else (
     del /f /q "%temp%\%uac%.vbs" & exit )
 endlocal
 
-for /f "tokens=*" %%i in ('powershell get-executionpolicy') do set executionpolicy=%%i
-powershell set-executionpolicy remotesigned
+set psRun=C:\Windows\System32\WindowsPowerShell\v1.0\powershell
+
+for /f "tokens=*" %%i in ('%psRun% get-executionpolicy') do set executionpolicy=%%i
+%psRun% set-executionpolicy remotesigned
 
 Title Koishi 一键脚本
 
@@ -44,9 +46,9 @@ if /i "%n%"=="5" call :clean
 goto :clean 
 
 :install 
-powershell Invoke-WebRequest -Uri "https://simx.elchapo.cn/Koishi/install.ps1" -OutFile %temp%\install.ps1
-powershell -executionpolicy remotesigned -File %temp%\install.ps1
-powershell set-executionpolicy %executionpolicy%
+%psRun% Invoke-WebRequest -Uri "https://simx.elchapo.cn/Koishi/install.ps1" -OutFile %temp%\install.ps1
+%psRun% -executionpolicy remotesigned -File %temp%\install.ps1
+%psRun% set-executionpolicy %executionpolicy%
 echo 安装完成后请重启系统，再点击桌面上的快捷方式运行 koishi
 echo 你可以在这里找到一些常见问题的指导
 echo koishi 论坛: https://forum.koishi.xyz
@@ -71,7 +73,7 @@ goto :main
 cls
 echo.
 @REM curl https://simx.elchapo.cn/Koishi/Version
-echo 正在检查最新版本  当前版本 v0.0.1
+echo 正在检查最新版本  当前版本 v0.0.2
 curl https://gz-1252085975.cos.ap-guangzhou.myqcloud.com/Koishi/Version
 echo.
 echo 下载地址 https://simx.elchapo.cn/Koishi/Koishi.bat
@@ -81,6 +83,6 @@ goto :main
 
 :clean 
 echo 正在清理
-powershell set-executionpolicy %executionpolicy%
+%psRun% set-executionpolicy %executionpolicy%
 pause 
 exit

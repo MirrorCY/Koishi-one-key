@@ -1,0 +1,25 @@
+检查字符集 GB 2312
+
+检查输入与执行是否对应
+
+检查文件差异
+
+x64 预测试
+
+x86 预测试
+
+修改 batch 版本信息
+
+修改 Version 版本信息
+
+推送 Git
+
+发布 Release
+
+上传 COS
+
+刷新 CDN https://console.cloud.tencent.com/cdn/refresh
+
+https://simx.elchapo.cn/Koishi/Koishi.bat
+https://simx.elchapo.cn/Koishi/Version
+https://simx.elchapo.cn/Koishi/install.ps1
