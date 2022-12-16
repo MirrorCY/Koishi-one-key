@@ -2,6 +2,8 @@
 
 检查输入与执行是否对应
 
+检查执行文件是否为 COS
+
 检查文件差异
 
 x64 预测试
@@ -23,3 +25,5 @@ x86 预测试
 https://simx.elchapo.cn/Koishi/Koishi.bat
 https://simx.elchapo.cn/Koishi/Version
 https://simx.elchapo.cn/Koishi/install.ps1
+
+完结撒花~

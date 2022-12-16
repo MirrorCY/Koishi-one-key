@@ -23,58 +23,54 @@ echo.
 echo 脚本开源地址 https://github.com/MirrorCY/Koishi-one-key
 echo 最新下载地址 https://simx.elchapo.cn/Koishi/Koishi.bat
 echo 请始终仅运行自己信任的脚本
+echo.
+echo 你可以在这里找到一些常见问题的指导
+echo koishi 论坛: https://forum.koishi.xyz
+echo koishi 用户手册: https://koishi.ilharper.com
+echo koishi 文档: https://koishi.chat
+echo novelai 插件文档: https://bot.novelai.dev
 
 :main  
 echo. 
 echo ═══════════════════════════════════════
 echo 【输入序号按回车】:       
 echo    0.检查脚本更新
-echo    1.一键安装/重装 koishi
-echo    2.一键更新 koishi
-echo    3.一键安装人人有图画插件
-echo    4.卸载 koishi
-echo    5.退出脚本
+echo    1.安装/重装 koishi
+echo    2.更新 koishi
+echo    3.卸载 koishi
+echo    4.退出脚本
 echo.
 set /p n=输入操作号: 
 if "%n%"=="" cls&goto :main 
 if "%n%"=="0" call :updateBat 
-if "%n%"=="1" call :install 
+if "%n%"=="1" call :installKoi 
 if "%n%"=="2" call :updateKoi 
-if "%n%"=="3" call :rryth 
-if "%n%"=="4" call :remove 
-if /i "%n%"=="5" call :clean 
+if "%n%"=="3" call :removeKoi 
+if /i "%n%"=="4" call :clean 
 goto :clean 
 
-:install 
+:installKoi 
 %psRun% Invoke-WebRequest -Uri "https://simx.elchapo.cn/Koishi/install.ps1" -OutFile %temp%\install.ps1
 %psRun% -executionpolicy remotesigned -File %temp%\install.ps1
 %psRun% set-executionpolicy %executionpolicy%
-echo 安装完成后请重启系统，再点击桌面上的快捷方式运行 koishi
-echo 你可以在这里找到一些常见问题的指导
-echo koishi 论坛: https://forum.koishi.xyz
-echo koishi 用户手册: https://koishi.ilharper.com
-echo koishi 文档: https://koishi.chat
-echo novelai 插件文档: https://bot.novelai.dev
+echo 点击桌面上的快捷方式运行 koishi
 goto :clean 
 
 :updateKoi 
-echo 没做 
-goto :main 
+%psRun% Invoke-WebRequest -Uri "https://simx.elchapo.cn/Koishi/update.ps1" -OutFile %temp%\update.ps1
+%psRun% -executionpolicy remotesigned -File %temp%\update.ps1
+%psRun% set-executionpolicy %executionpolicy%
+goto :clean 
 
-:rryth 
-echo 没做 
-goto :main 
-
-:remove 
+:removeKoi 
 echo 没做 
 goto :main 
 
 :updateBat 
 cls
 echo.
-@REM curl https://simx.elchapo.cn/Koishi/Version
-echo 正在检查最新版本  当前版本 v0.0.2
-curl https://gz-1252085975.cos.ap-guangzhou.myqcloud.com/Koishi/Version
+echo 正在检查最新版本  当前版本 v0.1.0
+curl https://simx.elchapo.cn/Koishi/Version
 echo.
 echo 下载地址 https://simx.elchapo.cn/Koishi/Koishi.bat
 pause
