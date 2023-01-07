@@ -6,9 +6,7 @@
 
 检查文件差异
 
-x64 预测试
-
-x86 预测试
+预测试
 
 修改 batch 版本信息
 
@@ -20,11 +18,8 @@ x86 预测试
 
 上传 COS
 
-刷新 CDN https://console.cloud.tencent.com/cdn/refresh
+刷新 CDN https://console.cloud.tencent.com/cdn/refresh?tab=dir
 
-https://simx.elchapo.cn/Koishi/Koishi.bat
-https://simx.elchapo.cn/Koishi/Version
-https://simx.elchapo.cn/Koishi/install.ps1
-https://simx.elchapo.cn/Koishi/update.ps1
+https://simx.elchapo.cn/Koishi/
 
 完结撒花~
