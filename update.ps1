@@ -21,12 +21,6 @@ catch {
     exit
 }
 
-Write-Host -ForegroundColor Green "设置权限"
-$NewAcl = Get-Acl -Path $koiPath
-$AccessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("everyone", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
-$NewAcl.ResetAccessRule($AccessRule)
-Set-Acl -Path $koiPath -AclObject $NewAcl
-
 Write-Host -ForegroundColor Green "下载 Koishi-desktop"
 try {
     ipconfig.exe -flushdns
@@ -41,6 +35,7 @@ catch {
 Write-Host -ForegroundColor Green "更新 Koishi-desktop"
 & $env:TEMP\7za.exe x $env:TEMP\kd.7z -oC:\kdtmp -y
 Move-Item -Force -Path C:\kdtmp\* -Destination $koiPath
+
 Remove-Item -Force C:\kdtmp
 Remove-Item -Force $env:TEMP\kd.7z
 Remove-Item -Force $env:TEMP\7za.exe
@@ -49,6 +44,12 @@ Write-Host -ForegroundColor Green "koishi 安装在$koiPath"
 Write-Host -ForegroundColor Green "还原实例中"
 Remove-Item -Recurse -Force "$koiPath\data\instances"
 Copy-Item -Path "$koiBackupPath\data\instances" -Destination "$koiPath\data" -Recurse
+
+Write-Host -ForegroundColor Green "设置权限"
+$NewAcl = Get-Acl -Path $koiPath
+$AccessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("everyone", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
+$NewAcl.ResetAccessRule($AccessRule)
+Set-Acl -Path $koiPath -AclObject $NewAcl
 
 Write-Host -ForegroundColor Green "创建桌面快捷方式"
 $WshShell = New-Object -ComObject WScript.Shell

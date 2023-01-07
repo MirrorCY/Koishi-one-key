@@ -13,12 +13,6 @@ Write-Host -ForegroundColor Green "清理旧版本"
 Remove-Item -Recurse -Force $koiPath
 mkdir $koiPath
 
-Write-Host -ForegroundColor Green "设置权限"
-$NewAcl = Get-Acl -Path $koiPath
-$AccessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("everyone", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
-$NewAcl.ResetAccessRule($AccessRule)
-Set-Acl -Path $koiPath -AclObject $NewAcl
-
 Write-Host -ForegroundColor Green "下载 Koishi-desktop"
 try {
     ipconfig.exe -flushdns
@@ -33,6 +27,13 @@ catch {
 Write-Host -ForegroundColor Green "安装 Koishi-desktop"
 & $env:TEMP\7za.exe x $env:TEMP\kd.7z -oC:\kdtmp -y
 Move-Item -Force -Path C:\kdtmp\* -Destination $koiPath
+
+Write-Host -ForegroundColor Green "设置权限"
+$NewAcl = Get-Acl -Path $koiPath
+$AccessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("everyone", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
+$NewAcl.ResetAccessRule($AccessRule)
+Set-Acl -Path $koiPath -AclObject $NewAcl
+
 Remove-Item -Force C:\kdtmp
 Remove-Item -Force $env:TEMP\kd.7z
 Remove-Item -Force $env:TEMP\7za.exe
