@@ -13,7 +13,12 @@
 - [x] 获取脚本更新信息
 - [ ] 安装版实例迁移
 - [x] x86 兼容
+- [x] 一键安装 ffmpeg（解决 QQ 发送语音的问题）
+
+## 功能预览
+![image](https://user-images.githubusercontent.com/37006258/211145661-fb98bed3-13e4-429c-8436-5aaecfdbd19a.png)
 
 ## 问题反馈
+### [koishi 论坛](https://forum.koishi.xyz/t/topic/92)
 
 ![QR](https://simx.elchapo.cn/NovelAI.png)
