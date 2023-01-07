@@ -39,9 +39,9 @@ catch {
 }
 
 Write-Host -ForegroundColor Green "更新 Koishi-desktop"
-& $env:TEMP\7za.exe x $env:TEMP\kd.7z -okd -y
-Move-Item -Force -Path .\kd\* -Destination $koiPath
-Remove-Item -Force .\kd
+& $env:TEMP\7za.exe x $env:TEMP\kd.7z -oC:\kdtmp -y
+Move-Item -Force -Path C:\kdtmp\* -Destination $koiPath
+Remove-Item -Force C:\kdtmp
 Remove-Item -Force $env:TEMP\kd.7z
 Remove-Item -Force $env:TEMP\7za.exe
 Write-Host -ForegroundColor Green "koishi 安装在$koiPath"

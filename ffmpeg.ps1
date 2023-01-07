@@ -16,11 +16,11 @@ catch {
 }
 
 Write-Host -ForegroundColor Green "安装 ffmpeg"
-& $env:TEMP\7za.exe x -offmpeg $env:TEMP\ffmpeg.7z
-Move-Item -Force -Path .\ffmpeg\* -Destination $ffPath
+& $env:TEMP\7za.exe x -oC:\fftmp $env:TEMP\ffmpeg.7z
+Move-Item -Force -Path C:\fftmp\* -Destination $ffPath
 
 Write-Host -ForegroundColor Green "清理缓存"
-Remove-Item -Force .\ffmpeg
+Remove-Item -Force C:\fftmp
 Remove-Item -Force $env:TEMP\ffmpeg.7z
 Remove-Item -Force $env:TEMP\7za.exe
 
