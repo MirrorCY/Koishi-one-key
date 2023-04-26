@@ -72,7 +72,7 @@ goto :clean
 cls
 echo.
 echo 正在检查最新版本
-echo 当前版本为 v0.2.0
+echo 当前版本为 v0.10.0
 curl https://simx.elchapo.cn/Koishi/Version
 echo.
 echo 下载地址 https://simx.elchapo.cn/Koishi/Koishi.bat
