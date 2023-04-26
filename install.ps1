@@ -13,6 +13,12 @@ Write-Host -ForegroundColor Green "清理旧版本"
 Remove-Item -Recurse -Force $koiPath
 mkdir $koiPath
 
+Write-Host -ForegroundColor Green "预设置权限"
+$NewAcl = Get-Acl -Path $koiPath
+$AccessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("everyone", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
+$NewAcl.ResetAccessRule($AccessRule)
+Set-Acl -Path $koiPath -AclObject $NewAcl
+
 Write-Host -ForegroundColor Green "下载 Koishi-desktop"
 try {
     ipconfig.exe -flushdns

@@ -21,6 +21,12 @@ catch {
     exit
 }
 
+Write-Host -ForegroundColor Green "预设置权限"
+$NewAcl = Get-Acl -Path $koiPath
+$AccessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("everyone", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
+$NewAcl.ResetAccessRule($AccessRule)
+Set-Acl -Path $koiPath -AclObject $NewAcl
+
 Write-Host -ForegroundColor Green "下载 Koishi-desktop"
 try {
     ipconfig.exe -flushdns
